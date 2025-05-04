@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker, Mapped, mapped_column, DeclarativeBase
 from sqlalchemy.dialects.postgresql import JSON
 from fastapi.middleware.cors import CORSMiddleware
 
-engine = create_engine(f"postgresql://postgres:yGuuSpkqSTpQrtfZOhAiZfVSRBxzMexc@postgres.railway.internal:5432/railway")
+engine = create_engine(f"postgresql://postgres:yGuuSpkqSTpQrtfZOhAiZfVSRBxzMexc@ballast.proxy.rlwy.net:32231/railway")
 
 class Base(DeclarativeBase): pass
 
