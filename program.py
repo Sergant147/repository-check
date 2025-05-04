@@ -6,13 +6,7 @@ from sqlalchemy import create_engine, Column, String, Integer
 from sqlalchemy.orm import sessionmaker, Mapped, mapped_column, DeclarativeBase
 from sqlalchemy.dialects.postgresql import JSON
 from fastapi.middleware.cors import CORSMiddleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Replace "*" with your domain for better security
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 user = "postgres"
 password = "postgres-password"
 host = "localhost"
@@ -43,7 +37,13 @@ class User(Base):
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace "*" with your domain for better security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class UserModel(BaseModel):
     username: str
     url: str
