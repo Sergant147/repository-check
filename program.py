@@ -1,5 +1,5 @@
 from typing import Annotated
-import uvicorn
+import uvicorn, os
 from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, String, Integer
@@ -102,4 +102,4 @@ def update_cards(db: db_dependency, username: str):
     db.refresh(user)
 
 if __name__ == "__main__":
-    uvicorn.run(app, port=8081)
+    uvicorn.run(app, port=os.getenv("PORT", 8081))
